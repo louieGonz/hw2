@@ -1,0 +1,28 @@
+{{extend 'layout.html'}}
+
+<h1>Current Listings</h1> You currently seeing the latest listings
+
+
+<!--Prompt user to sign in to edit and add listings, if not signed in  -->
+{{if not auth.user:}}
+Log In, to add\edit\delete the listings
+{{pass}}
+<br>
+<br>
+
+
+
+
+<br>
+<br>
+
+<h1>{{=A('Check out our sellers ratings', _href=URL('list_sellers'))}}</h1>
+<br>
+<br>
+<h1>{{=A('Check out Image viewing', _href=URL('imageView'))}}</h1>
+
+{{=grid}}
+
+<br>
+<br>
+

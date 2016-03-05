@@ -1,0 +1,15 @@
+{{extend 'layout.html'}}
+
+<form><input type="hidden" id="id" name="id" value="" /></form>
+
+{{for item in items:}}
+<p>
+
+{{=item.name}}
+
+<br />
+Rating=<span id="item{{=item.id}}">{{=item.rating}}</span>
+[<span onclick="jQuery('#id').val('{{=item.id}}');
+       ajax('{{=URL('default', 'vote')}}', ['id'], 'item{{=item.id}}');">vote up</span>]
+</p>
+{{pass}}

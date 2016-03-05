@@ -1,0 +1,47 @@
+{{extend "layout.html"}}
+<head>
+
+<br>
+<br>
+<br>
+{{previous=0}}
+{{current=0}}
+
+{{for des in rows2:}}
+<div style="width:100%; height:100%; max-width: 50% ">
+    {{previous=current}}
+    {{current = des.description}}
+    <!-- queries to iterate images for each description -->
+    {{if des.description != previous:}}
+        <h1>{{=des.description.title}}</h1>
+        {{for img in db(db.images.description==des.description).select():}}
+            <img style="width:64px; height:64px" onmouseover="bigImg(this)" onmouseout="normalImg(this)" src="{{=URL('default', 'download', args=img.image)}}" />
+            <br>
+        {{pass}}
+    <hr size="20px"height="20px" noshade="black" >
+
+
+        <hr>
+
+    {{pass}}
+
+
+
+</div>
+<br/>
+{{pass}}
+
+<script>
+    function bigImg(x) {
+        x.style.height = "200px";
+        x.style.width = "200px";
+    }
+
+    function normalImg(x) {
+        x.style.height = "64px";
+        x.style.width = "64px";
+    }
+</script>
+
+<!-- This will print the post refrence that images correspond to -->
+{{=rows2}}
